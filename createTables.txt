@@ -1,0 +1,91 @@
+CREATE TABLE `forum_users` (
+  `userID` INT(11) NOT NULL AUTO_INCREMENT,
+	`userName` VARCHAR(50) NOT NULL,
+	`userPass` VARCHAR(50) NOT NULL,	
+	`userEmail` VARCHAR(255) NOT NULL,
+	`userDate` DATETIME NOT NULL,	
+	PRIMARY KEY (userID),
+	UNIQUE INDEX (userName)
+);
+
+CREATE TABLE `forum_categories` (
+`catID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+`catName` VARCHAR( 255 ) NOT NULL ,
+`catDescription` VARCHAR( 255 ) NOT NULL ,
+PRIMARY KEY ( catID ) ,
+UNIQUE INDEX ( catName )
+);
+
+ CREATE TABLE `forum_questions` (
+`questionID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+`question` VARCHAR( 255 ) NOT NULL ,
+`questionDetail` TEXT,
+`questionDate` DATETIME NOT NULL ,
+`questionBy` INT( 11 ) NOT NULL ,
+`questionCategory` INT( 11 ) NOT NULL ,
+PRIMARY KEY ( questionID ) ,
+FOREIGN KEY ( questionBy ) REFERENCES `forum_users` ( userID ) ON UPDATE CASCADE ON DELETE CASCADE ,
+FOREIGN KEY ( questionCategory ) REFERENCES `forum_categories` ( catID ) ON UPDATE CASCADE ON DELETE CASCADE
+); 
+
+ CREATE TABLE `forum_replies` (
+`replyID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+`replyContent` TEXT NOT NULL ,
+`replyDate` DATETIME NOT NULL ,
+`questionAnswered` INT( 11 ) NOT NULL ,
+`answeredBy` INT( 11 ) NOT NULL ,
+PRIMARY KEY ( replyID ) ,
+FOREIGN KEY ( questionAnswered ) REFERENCES `forum_questions` ( questionID ) ON UPDATE CASCADE ON DELETE CASCADE ,
+FOREIGN KEY ( answeredBy ) REFERENCES `forum_users` ( answeredBy ) ON UPDATE CASCADE ON DELETE CASCADE
+); 
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES (
+"javascript", "JavaScript (shortened to JS) is a lightweight, interpreted, object-oriented language with 
+  first-class functions, most known as the scripting language for Web pages, but used in many non-browser 
+	environments as well such as node.js or Apache CouchDB."
+);
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES (
+"SQL", "A special-purpose programming language designed for managing data held in a relational database management 
+  system (RDBMS)");
+
+	
+INSERT INTO forum_categories( catName, catDescription )
+VALUES (
+"PHP", "A server-side scripting language designed for web development but also used as a general-purpose programming language."
+);
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES ("HTML", "The standard markup language used to create web pages");
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES ("CSS", "A style sheet language used for describing the look and formatting of a document written in a markup language.");
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES ("Ajax", "Short for asynchronous JavaScript and XML. It is a group of interrelated Web development techniques used on the client-side to create asynchronous Web applications"
+);
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES (
+"Node.js", "Node is a stable Input / Output platform built on top of the V8 JavaScript engine. On it you can write JavaScript 
+programs that will be executed server-side, and that talk to input/output sources such as networks and file systems. ");
+
+INSERT INTO forum_categories( catName, catDescription )
+VALUES (
+"Other", "Use this category if your question does not fit anywhere else.");
+
+INSERT INTO forum_questions(question, questionDetail, questionDate, questionBy, questionCategory)
+VALUES (?, ?, ?, ?, ?);
+
+SELECT questionID, question, questionDetail, questionDate, catName
+            FROM `forum_questions`
+            INNER JOIN forum_categories ON questionCategory = catID
+            WHERE catName = ?
+						ORDER BY questionDate DESC;
+
+SELECT replyContent, replyDate, userName FROM `forum_replies` INNER JOIN forum_users ON answeredBy = userID
+WHERE questionAnswered=?;
+SELECT question FROM `forum_questions` WHERE questionID =?;					
+

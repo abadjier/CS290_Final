@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Code Pop - Questions and Answers</title>
+	<link href="style2.css" type="text/css" rel="stylesheet" />	
+</head>
+<body>
+  <div class="wrapper">
+		<div>
+			<p id="siteName">Code Pop </p>
+		</div>
+		<div id="description">
+			Code Pop is a question and answer site for professional and aspiring programmers 		
+			</br>			
+		</div>	
+		<hr>		
+		<div id="instruction">
+			Please log in or register to begin asking and/or answering questions.
+		</div>
+		<div id="signForms">
+			<div id="signUp">
+				<fieldset>					
+					<legend>New Users -- Sign Up</legend>					
+					<form id="signUpForm" action="welcome.php" method="post" >
+						<div><input id="userid" name="userid" placeholder="Username (your public display name)" 
+							type="text" maxlength="50" onblur="validateusername()" required/></div>
+						<div id="divUser1"></div>
+						<div><input id="email" name="email" placeholder="Email (required, but never shown)" type="email" 
+							onblur="validateEmail()" required/></div>
+						<div id="divEmail"></div>
+						<div><input id="pass" name="password" placeholder="Password" type="password" value="" required/></div>
+						<div><input id="pass2" name="password2" placeholder="Confirm password" type="password" value="" onblur="validatePass()" required/></div>
+						<div id="divPassword"></div>
+						<div class="form-submit"><input class="submit-button" name="submit-button" type="submit" value="Sign Up" /></div>
+					</form>
+					<p>*All fields are required</p>
+				</fieldset>
+			</div>
+			<div id="logIn">
+				<fieldset>
+					<legend>Returning Users -- Log In</legend>
+					<form action="" onsubmit="return validateUserLogin()" method="post" id="logInForm">
+					  <div><input id="logId" name="logId" placeholder="Username (your public display name)" type="text"required/></div>
+            <div><input id="logPass" name="logPass" placeholder="Password" type="password" value="" required/></div>
+            <div class="form-submit"><input class="submit-button" name="submit-button" type="submit" value="Log in"></div>
+					</form>
+					<div id="divLogIn"></div>
+				</fieldset>
+			</div> <!--logIn-->
+		</div><!--signForms-->    
+	</div><!--wrapper-->
+	<div id="footer"><p>Created by Ralitza Abadjieva</p></div>	
+	<script src="validateUserAv.js"></script> 
+	
+</body>
+</html>

@@ -1,0 +1,104 @@
+body {  
+	background-color: #443266;	
+	color: #F1F0FF;
+	font-family: Courier New;	
+	text-align: center;
+}
+
+html, body {
+  height: 100%;
+}
+
+/*source for footer styling: http://ryanfait.com/resources/footer-stick-to-bottom-of-page/ */
+.wrapper { 
+  margin: 0 auto;
+}
+
+#footer {  	
+  clear: both;	
+	text-align: center;
+	padding: 20px;
+}
+
+#siteName  {   
+	font-family: Fantasy;
+	font-size: 400%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;	
+}
+
+#description {  
+	font-size: 150%;
+	font-weight: bold;
+	text-align: center;	
+}
+
+#instruction {  
+  font-style: Italic;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 40px;
+}
+
+#signForms {
+  width: 90%; 
+	margin: 0 auto;	
+}
+
+/*source: http://stackoverflow.com/questions/22904646/css-aligning-two-divs-side-by-side-in-the-center-with-position-absolute*/
+#signUp, #logIn {
+  display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+
+#logIn {  
+	margin-left: 70px;	
+}
+
+/* Border styling source: Jon Duckett "HTML & CSS Design and Build Websites" pp.322 */
+fieldset {  
+	border: 5px solid  #C3C3E5;
+	border-radius: 1em 4em 1em 4em / 2em 1em 2em 1em;
+	-moz-border-radius: 1em 4em 1em 4em
+	 / 2em 1em 2em 1em;
+	-webkit-border-radius: 1em 4em 1em 4em
+	 / 2em 1em 2em 1em;
+	/*padding: 20px;*/
+}
+
+legend {
+  font-style: Italic;
+	font-weight: bold;
+	padding: 10px;
+}
+
+#signUp div {
+  margin-bottom: 10px;	
+}
+
+#logIn div {
+  margin-bottom: 10px;	
+}
+
+input {
+		padding: 5px;
+		width: 300px;
+}
+
+input.submit-button {
+  /*background-color: rgb(120,94,175);*/
+	background-color:  #785EAF;
+	border-radius: 10px;
+	color: white;	
+	font-weight: bold;
+	float: right;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+input.submit-button:hover {
+  background-color: #F1F0FF;
+	color: #8C489F;	
+}
